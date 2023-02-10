@@ -1,13 +1,40 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer components {
+	/*header*/
+	.lg_header {
+		@apply flex justify-between h-[60px] border border-gray-200 bg-white shadow-md w-full items-center px-20
+	}
+	.header_span {
+		@apply flex space-x-3 items-center
+	}
+	.header_list {
+		@apply text-sm text-gray-800 hover:text-amber-300 transition delay-200 cursor-pointer
+	}
+	.small_header {
+		@apply h-[25px] flex justify-between items-center px-20 text-xs text-gray-700 bg-white border border-gray-100
+	}
+	.small_header_span {
+		@apply flex space-x-2 items-center
+	}
+	.small_header_list {
+		@apply font-medium hover:text-amber-300 transition delay-200 cursor-pointer
+	}
+	.form_span_1 {
+    	@apply bg-amber-500 h-full rounded-tr-sm rounded-br-sm max-w-full justify-center items-center flex space-x-2 cursor-pointer text-center hover:bg-amber-400 transition delay-200 px-2 py-1;
+    }
+    .form_span_2 {
+    	@apply ml-4;
+  	}
+  	.form {
+    	@apply flex max-w-7xl border border-gray-300 flex-row items-center rounded-sm h-10 flex-1 mx-4 bg-white hidden lg:flex;
+  	}
+  	.form_input {
+  	    @apply border-none h-full flex-1 text-sm font-['Montserrat'] text-gray-500 focus:outline-none focus:border-none px-2 py-1;
+  	}
+  	.form_text {
+    	@apply font-semibold cursor-pointer;
+  	}
 }
