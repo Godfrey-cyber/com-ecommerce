@@ -12,7 +12,7 @@ const Header = () => {
 	return (
 		<header className="lg_header">
             <span className="flex space-x-4 items-center">
-                <p onClick={() => navigate("/home")} className="font-bold text-2xl text-black cursor-pointer">.Store</p>
+                <p onClick={() => navigate("/")} className="font-bold text-2xl text-black cursor-pointer">.Store</p>
                 <p className="font-semibold text-lg text-gray-800 cursor-pointer px-2 py-1 border-2 border-amber-400 rounded-md">Categories</p>
             </span>
             <form className="form">
