@@ -1,11 +1,13 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom"
 import { selectUser } from "../redux/userRedux.js"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+import { logoutUser } from "../redux/apiCalls.js"
 // import { username } from "../requestMethods"
 
 const SmallHeader = () => {
 	const navigate = useNavigate()
+	const dispatch = useDispatch()
 	const user = useSelector(selectUser)
 	const username = user?.username?.split(" ")[0]
 	return (
