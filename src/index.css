@@ -32,9 +32,58 @@
     	@apply flex max-w-7xl border border-gray-300 flex-row items-center rounded-sm h-10 flex-1 mx-4 bg-white hidden lg:flex;
   	}
   	.form_input {
-  	    @apply border-none h-full flex-1 text-sm font-['Montserrat'] text-gray-500 focus:outline-none focus:border-none px-2 py-1;
+  	    @apply border-none h-full flex-1 text-sm font-['Montserrat'] text-gray-500 focus:outline-none focus:border-none px-3 py-2;
   	}
   	.form_text {
     	@apply font-semibold cursor-pointer;
   	}
+  	/*cart*/
+  	.cart {
+    @apply bg-orange-500 rounded-full text-sm justify-center h-5 w-5 flex items-center text-white font-semibold absolute -top-2 left-4;
+  }
+  .cart_div {
+    @apply flex flex-col space-y-2 gap-x-4 px-4 border-b border-gray-200 relative p-4 w-full
+  }
+  .img_tag {
+  	@apply flex
+  }
+  .cart_button {
+    @apply flex items-center text-sm text-gray-600 font-bold px-3 py-2 bg-gray-300 cursor-pointer
+  }
+  .cart_icon {
+    @apply text-sm bg-orange-200 rounded-full p-2 cursor-pointer absolute top-2 right-6
+  }
+  .head_section {
+    @apply bg-gray-200 min-h-screen w-full overflow-x-hidden font-['Montserrat'] font-bold;
+  }
+  .main {
+    @apply flex flex-col ;
+  }
+  .login_grid {
+    @apply flex flex-col mx-auto lg:px-20 px-4 md:px-10 gap-4 lg:gap-x-4 w-full h-full my-20
+  }
+  .register_header {
+    @apply text-sm font-semibold text-black
+  }
+  .label_text {
+    @apply text-sm font-normal text-black
+  }
+  .form_input {
+    @apply border-none text-xs text-gray-400 focus:outline-none w-full
+  }
+  .form-span {
+    @apply border border-gray-400 rounded-sm px-3 py-2 w-full
+  }
+  .sign_up_button {
+    @apply bg-orange-400 text-sm font-semibold text-white px-3 py-2 w-full rounded-md hover:bg-orange-300
+  }
+  .register_grid {
+    @apply grid grid-cols-12 lg:px-20 px-4 md:px-5 gap-4 lg:gap-x-4 w-full h-full my-20 items-center
+  }
+  .login_grid {
+    @apply flex flex-col mx-auto lg:px-20 px-4 md:px-10 gap-4 lg:gap-x-4 w-full h-full my-20 items-center
+  }
+  .icon_grid {
+    @apply  h-6 w-6 text-purple-400 
+  }
 }
