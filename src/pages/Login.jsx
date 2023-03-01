@@ -21,7 +21,7 @@ const Login = () => {
         event.preventDefault()
         login(dispatch, { password, email })
         setFormData({email: "", password: ""})
-        navigate('/home')
+        navigate('/')
     }
     const user = useSelector(selectUser)
     // console.log(user)
