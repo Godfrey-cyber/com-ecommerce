@@ -18,7 +18,7 @@ function App() {
     
     // console.log(user)
   return (
-    <div className="min-h-screen w-full font-['Montserrat'] bg-zinc-100 text-sm text-semibold relative pb-4">
+    <div className="min-h-screen w-full font-['Montserrat'] bg-zinc-100 text-sm text-semibold relative pb-4 overlow-x-hidden">
     
     <BrowserRouter>
       <Routes>

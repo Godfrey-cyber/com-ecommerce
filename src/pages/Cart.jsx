@@ -20,8 +20,7 @@ const ProductDetails = () => {
 	const dispatch = useDispatch()
 	const products = useSelector(items)
 	const user = useSelector(selectUser)
-	console.log(user)
-//stripe session
+// stripe session
 	const createCheckoutSession = async () => {
 		const stripe = await stripePromise
 		const checkoutSession = await axios.post("http://localhost:5000/api/checkout/payment", { 
@@ -59,10 +58,10 @@ const ProductDetails = () => {
 		<div className="flex flex-col w-full h-full bg-white">
 			<SmallHeader />
 			<Header />
-			<section className="flex flex-col px-32 mx-auto my-8">
-				<p className="text-lg font-semibold text-gray-800">You have {products.length} products in your cart</p>
-				<div className="grid grid-cols-12 gap-4 bg-white ">
-					<div className="col-span-8 flex flex-col gap-y-4 rounded-sm w-full">
+			<section className="flex flex-col px-4 md:px-12 lg:px-20 mx-auto my-8">
+				<p className="text-sm lg:text-lg font-medium lg:font-semibold text-gray-800">You have {products.length} products in your cart</p>
+				<div className="grid grid-cols-1 lg:grid-cols-12 gap-4 bg-white ">
+					<div className="col-span-12 lg:col-span-8 flex flex-col gap-y-4 rounded-sm w-full">
 						{products.map((item, id) => (
 							<div key={id} className="cart_div">
                         <div className="flex space-x-4 items-center">
@@ -71,26 +70,26 @@ const ProductDetails = () => {
                                 <img src={item.photo} alt="alt_image" layout="fill" className="img_tag object-contain"/>
                             </span>
                             <span onClick={() => dispatch(removeFromCart({ id: item._id }))} className="cart_icon">
-                                <XMarkIcon className="h-6 w-6 text-white" />
+                                <XMarkIcon className="h-4 lg:h-6 w-4 lg:w-6 text-white" />
                             </span>
                             <div className="flex flex-col space-y-2 mb-3 w-full">
-                                <p className="text-sm font-medium text-gray-800 pr-4 ">{item.title}</p>
+                                <p className="text-sm font-medium text-gray-800 truncate pr-4 ">{item.title}</p>
                                 <p className="text-sm font-normal text-gray-600">Seller: Deals Duka</p>
                             </div>
                             </div>
                         {/*butttons*/}
                             <span className="flex items-center justify-between w-full">
                                 <span className="flex items-center">
-                                    <button className="items-center flex text-lg text-gray-500 py-2 px-3 hover:text-white transition delay-300 transition delay-300 cursor-pointer rounded-tl-md rounded-bl-md hover:bg-red-200 bg-gray-200">-</button>
+                                    <button className="items-center flex text-lg text-gray-500 py-1 lg:py-2 px-1.5 lg:px-3 hover:text-white transition delay-300 transition delay-300 cursor-pointer rounded-tl-md rounded-bl-md hover:bg-red-200 bg-gray-200">-</button>
                                     <span className="items-center flex text-sm text-gray-500 p-2 px-6">{item.count}</span>
-                                    <button className="items-center flex text-lg text-gray-500 py-2 px-3 hover:text-white transition delay-300 transition delay-300 cursor-pointer rounded-tr-md rounded-br-md hover:bg-green-200 bg-gray-200">+</button>
+                                    <button className="items-center flex text-lg text-gray-500 py-1 lg:py-2 px-1.5 lg:px-3 hover:text-white transition delay-300 transition delay-300 cursor-pointer rounded-tr-md rounded-br-md hover:bg-green-200 bg-gray-200">+</button>
                                 </span>
                                 <p className="text-sm font-semilbold text-gray-500">KSH: {item.price}</p>
                             </span> 
                         </div>
 							))}
 					</div>
-					<div className="col-span-4 flex flex-col space-y-12 bg-gray-100 rounded-sm px-4 py-6 h-fit">
+					<div className="col-span-12 lg:col-span-4 flex flex-col space-y-12 bg-gray-100 rounded-sm px-4 py-6 h-fit">
 						<div className="flex justify-between items-center">
 							<span className="flex flex-col space-y-2">
 								<p className="text-lg font-medium text-gray-700">Subtotal</p>

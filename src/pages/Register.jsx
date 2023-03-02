@@ -22,7 +22,6 @@ const Register = () => {
         event.preventDefault()
         if (!password || !email || !username) return
             checkPassword(password)
-        console.log(username, email)
         register(dispatch, { username, email, password })
         setFormData({email: "", username: "", password: ""})
         navigate('/login')

@@ -38,12 +38,12 @@ const ProductDetails = ({ modal }) => {
 	}, [location])
 	// console.log(product)
 	return (
-		<div className="flex flex-col w-full h-full">
+		<div className="flex flex-col w-full h-full relative">
 			<SmallHeader />
 			<Header />
 			<div className="flex flex-col space-y-4">
-				<div className="grid grid-cols-1 sm:grid-cols-2 gap-12 my-12 px-20 bg-white py-4">
-					<div className="object-cover h-80 w-62">
+				<div className="grid grid-cols-1 sm:grid-cols-2 gap-12 my-12 px-8 md:px-12 lg:px-20 bg-white py-4">
+					<div className="object-cover h-72 w56 md:h-80 md:w-62">
 						<img src={product.photo} alt={product.title} className="w-full h-full object-contain cursor-pointer" />
 					</div>
 					<div className="flex flex-col space-y-4 ">
@@ -65,9 +65,10 @@ const ProductDetails = ({ modal }) => {
 						</div>
 					</div>
 				</div>
-				<div className="grid grid-rows-2 px-20 w-full">
+				{/*PRODUCT INFO*/}
+				<div className="grid grid-rows-2 px-8 md:px-12 lg:px-20 w-full">
 					<span className="flex flex-col space-y-2">
-						<h4 className="text-lg font-semibold text-gray-800">Product Info</h4>
+						<h4 className="text-lg font-normal md:font-semibold text-gray-800">Product Info</h4>
 						<p className="text-sm font-light text-gray-800">{product.desc}</p>
 					</span> 
 					{/*reviews*/}
@@ -77,7 +78,7 @@ const ProductDetails = ({ modal }) => {
 						<p className="text-sm font-light text-gray-800">{product.desc}</p>
 						<div className="flex flex-col space-y-4">
 							<div className="flex space-x-2 items-center my-4">
-								<div className="h-32 w-32 rounded-full">
+								<div className="h-20 lg:h-32 w-20 lg:w-32 rounded-full">
 									<img src={product.photo} alt={product.title} className="w-4/5 h-4/5 object-cover  rounded-full" />
 								</div>
 								<span className="flex flex-col space-y-2">
@@ -91,7 +92,7 @@ const ProductDetails = ({ modal }) => {
 						</div>
 						<div className="flex flex-col space-y-4">
 							<div className="flex space-x-2 items-center my-4">
-								<div className="h-32 w-32 rounded-full">
+								<div className="h-20 lg:h-32 w-20 lg:w-32 rounded-full">
 									<img src={product.photo} alt={product.title} className="w-4/5 h-4/5 object-cover rounded-full" />
 								</div>
 								<span className="flex flex-col space-y-2">

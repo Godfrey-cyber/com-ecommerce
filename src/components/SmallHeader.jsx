@@ -14,17 +14,17 @@ const SmallHeader = () => {
 		<div className="small_header">
 			<span className="small_header_span">
 				<p className="small_header_list">Return Policy</p>
-				<p className="small_header_list">Contact Us</p>
-				<p className="small_header_list">Updates</p>
+				<p className="small_header_list hidden md:flex">Contact Us</p>
+				<p className="small_header_list hidden md:flex">Updates</p>
 			</span>
 			<span className="small_header_span">
-				<p className="small_header_list">Track Order</p>
+				<p className="small_header_list hidden md:flex">Track Order</p>
 				{/*<p className="small_header_list">News</p>
 				<p className="small_header_list">Updates</p>*/}
 			</span>
 			<span className="small_header_span">
-				{!user ? <p onClick={() => navigate('/register')} className="small_header_list">Sign up</p> : <p onClick={() => logoutUser(dispatch())} className="small_header_list">{`Hello ${username}`}</p>}
-				<p className="small_header_list">Sell on Store</p>
+				{!user ? <p onClick={() => navigate('/register')} className="small_header_list hidden md:flex">Sign up</p> : <p onClick={() => logoutUser(dispatch())} className="small_header_list">{`Hello ${username}`}</p>}
+				<p className="small_header_list ">Sell on Store</p>
 			</span>
 		</div>
 	)
