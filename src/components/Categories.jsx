@@ -17,7 +17,7 @@ const Categories = () => {
 		getCategories()
 	}, [])
 	return (
-		<section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-x-4 lg:gap-x-8 px-6 lg:px-20 my-12">
+		<section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-x-4 lg:gap-x-8 px-4 lg:px-20 my-12">
 			{products.map(item => (
 				<div onClick={() => navigate(`/category_page/${item._id}`)} key={item._id} className="flex flex-col space-y-1 cursor-pointer group rounded-md bg-white max-h-40 min-h-32 w-36 md:w-48 lg:w-44">
 					<img className="md:h-4/5 h-3/5 w-3/5 md:w-4/5 object-contain lg:object-fit mx-auto" src={item.image} alt="" />

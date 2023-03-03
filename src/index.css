@@ -51,7 +51,7 @@
     @apply flex items-center text-sm text-gray-600 font-bold px-3 py-2 bg-gray-300 cursor-pointer
   }
   .cart_icon {
-    @apply text-sm bg-orange-200 rounded-full p-2 cursor-pointer absolute top-2 right-6
+    @apply text-sm bg-orange-200 rounded-full p-2 cursor-pointer absolute top-16 lg:top-10 right-6
   }
   .head_section {
     @apply bg-gray-200 min-h-screen w-full overflow-x-hidden font-['Montserrat'] font-bold;
@@ -85,5 +85,32 @@
   }
   .icon_grid {
     @apply  h-6 w-6 text-purple-400 
+  }
+  .cat_section {
+    @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-x-4 lg:gap-x-8 px-4 lg:px-20 my-12
+  }
+  .product_section {
+    @apply flex flex-col px-4 lg:px-20 mx-auto w-full
+  }
+  .product_title {
+    @apply text-xl font-semibold my-5 text-gray-800 text-center
+  }
+  .product_div {
+    @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-4 md:gap-4 lg:gap-8
+  }
+  .item_div {
+    @apply flex flex-col space-y-1 cursor-pointer  rounded-md bg-white h-64 md:h-72 md:w-52 lg:h-96 w-36 lg:w-64 px-2 py-6
+  }
+  .item_title {
+    @apply text-sm font-normal md:font-medium my-4 text-gray-800 truncate
+  }
+  .item_price {
+    @apply text-sm md:text-lg font-normal md:font-light text-gray-600
+  }
+  .item_button {
+    @apply px-2 py-1 transition delay-300 bg-white text-sm text-orange-500 border border-orange-300 rounded-md
+  }
+  .item_img {
+    @apply h-3/5 lg:h-4/5 w-3/5 lg:w-4/5 object-contain mx-auto
   }
 }
