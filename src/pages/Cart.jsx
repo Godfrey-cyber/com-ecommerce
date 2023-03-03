@@ -99,7 +99,7 @@ const ProductDetails = () => {
 							))}
 					</div>}
 				{/*CART SUMMARY*/}
-					<div className="col-span-12 lg:col-span-4 flex flex-col space-y-12 bg-gray-100 rounded-sm px-4 py-6 h-fit">
+					{!products.length === 0 && <div className="col-span-12 lg:col-span-4 flex flex-col space-y-12 bg-gray-100 rounded-sm px-4 py-6 h-fit">
 						<div className="flex justify-between items-center">
 							<span className="flex flex-col space-y-2">
 								<p className="text-lg font-medium text-gray-700">Subtotal</p>
@@ -111,7 +111,7 @@ const ProductDetails = () => {
 							</span>
 						</div>
 						<button onClick={checkoutFunction} className="text-lg font-medium hover:font-semibold px-1 lg:px-2 py-2 lg:py-4 w-full mx-auto bg-orange-400 hover:bg-orange-500 transition delay-300 rounded-sm text-white">CHECKOUT</button>
-					</div>
+					</div>}
 				</div>
 			</section>
 		</div>
