@@ -28,14 +28,14 @@ const ProductDetails = () => {
 			<Header />
 			<section className="product_section">
 			<p className="product_title">Crazy March deals</p>
-			<div className="product_div">
+			<div className="product_div group">
 				{products?.slice(0, 8).map(item => (
 					<div onClick={() => navigate(`/product_detail/${item._id}`)} key={item._id} className="item_div">
 						<img className="item_img" src={item.photo} alt={item.title} />
 						<p className="item_title">{item.title}</p>
 						<span className="flex flex-col space-y-2">
 							<p className="item_price">KSH. {item.price}</p>
-							<button className="item_button">BUY NOW</button>
+							<button className="item_button group-hover:bg-orange-400 group-hover:text-white">BUY NOW</button>
 						</span>	
 					</div>
 					))}

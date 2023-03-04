@@ -3,26 +3,41 @@ import Header from "../components/Header.jsx"
 import SmallHeader from "../components/SmallHeader.jsx"
 import { useLocation } from "react-router-dom"
 import axios from "axios"
-import { useDispatch } from "react-redux"
-import { addProduct } from "../redux/cartRedux.js"
+import { useDispatch, useSelector } from "react-redux"
+import { addProduct, increment, decrement, getCartCount, items, getTotal } from "../redux/cartRedux.js"
 
 const ProductDetails = ({ modal }) => {
 	const [product, setProduct] = useState({})
 	const dispatch = useDispatch()
 	const location = useLocation().pathname.split("/")[2]
 	const [count, setCount] = useState(0)
-	const handleQty = (type) => {
-		if (type === "dec") {
-			count > 1 && setCount(count - 1)
+	const prods = useSelector(items)
+	const [quantity, setQuantity] = useState(0)
+	const cartCount = useSelector(state => state.cart.totalCount)
+	const cartTotal = useSelector(state => state.cart.total)
+	console.log(cartCount)
+	console.log(cartTotal)
+	console.log(prods)
+	const handleQtyInc = () => {
+		// if (type === "dec") {
+		// 	count > 1 && setCount(count - 1)
 
-		} else {
-			setCount(count + 1)
-			dispatch(addProduct({ ...product, count }))
-		}
+		// } else {
+		// 	setCount(count + 1)
+		// 	dispatch(addProduct({ ...product, count }))
+		// }
+		setCount(count + 1)
+		dispatch(increment({id: product._id, count }))
+	}
+	const handleQtyDec = () => {
+		count > 1 && setCount(count - 1)
+		dispatch(decrement({id: product._id, count }))
 	}
 	const handleClick = () => {
 		setCount(count + 1)
 		dispatch(addProduct({ ...product, count }))
+		dispatch(getCartCount())
+		dispatch(getTotal())
 	}
 	// FETCH PRODUCT
 	useEffect(() => {
@@ -55,13 +70,13 @@ const ProductDetails = ({ modal }) => {
 							<h2 className="text-lg font-normal text-gray-800">Brand: {product.brand}</h2>
 							<h2 className="text-lg font-semibold text-gray-800">In Stock: {product.quantity}</h2>
 						</span>
-						<button disabled={count > 0 ? true : false} onClick={handleClick} className="min-w-36 px-3 py-3 hover:bg-orange-600 transition delay-300 bg-orange-400 focus:outline-none rounded-md text-white font-semibold text-lg text-white">Add to Cart</button>
+						<button onClick={() => handleClick()} className="min-w-36 px-3 py-3 hover:bg-orange-600 transition delay-300 bg-orange-400 focus:outline-none rounded-md text-white font-semibold text-lg text-white">Add to Cart</button>
 						<div className="flex items-center border border-gray-200 rounded-md w-max">
-							<span onClick={() => handleQty("dec")} className="items-center flex text-lg text-gray-500 py-2 px-3 hover:text-white transition delay-300 transition delay-300 cursor-pointer rounded-tl-md rounded-bl-md hover:bg-red-200 bg-gray-200">-</span>
+							<span onClick={handleQtyDec} className="items-center flex text-lg text-gray-500 py-2 px-3 hover:text-white transition delay-300 transition delay-300 cursor-pointer rounded-tl-md rounded-bl-md hover:bg-red-200 bg-gray-200">-</span>
 							<span className="items-center flex w-12">
-								<p className="text-sm text-gray-500 mx-auto">{ count }</p>
+								<p className="text-sm text-gray-500 mx-auto">{ product.count }</p>
 							</span>
-							<span onClick={() => handleQty("inc")} className="items-center flex text-lg text-gray-500 py-2 px-3 hover:text-white transition delay-300 transition delay-300 cursor-pointer rounded-tr-md rounded-br-md hover:bg-green-200 bg-gray-200">+</span>
+							<span onClick={handleQtyInc} className="items-center flex text-lg text-gray-500 py-2 px-3 hover:text-white transition delay-300 transition delay-300 cursor-pointer rounded-tr-md rounded-br-md hover:bg-green-200 bg-gray-200">+</span>
 						</div>
 					</div>
 				</div>

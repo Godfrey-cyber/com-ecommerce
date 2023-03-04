@@ -4,7 +4,7 @@ import { XMarkIcon } from '@heroicons/react/24/outline'
 import SmallHeader from "../components/SmallHeader.jsx"
 import { useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
-import { items, selectTotal, removeFromCart, deleteAll } from "../redux/cartRedux.js"
+import { items, selectTotal, removeFromCart, deleteAll, increment, decrement } from "../redux/cartRedux.js"
 import StripeCheckout from "react-stripe-checkout"
 import axios from "axios"
 import { loadStripe } from "@stripe/stripe-js"
@@ -52,6 +52,10 @@ const ProductDetails = () => {
 			createCheckoutSession()
 		}
 	}
+	const deleteCart = () => {
+		dispatch()
+	}
+
 	//clear cart
 	// console.log(JSON.parse(JSON.parse(localStorage.removeItem("persist:root")).cart))
 	return (
@@ -89,7 +93,7 @@ const ProductDetails = () => {
                             <span className="flex items-center justify-between w-full">
                                 <span className="flex items-center">
                                     <button className="items-center flex text-lg text-gray-500 py-1 lg:py-2 px-1.5 lg:px-3 hover:text-white transition delay-300 transition delay-300 cursor-pointer rounded-tl-md rounded-bl-md hover:bg-red-200 bg-gray-200">-</button>
-                                    <span className="items-center flex text-sm text-gray-500 p-2 px-6">{item.count}</span>
+                                    <span className="items-center flex text-sm text-gray-500 p-2 px-6">{item.quantity}</span>
                                     <button className="items-center flex text-lg text-gray-500 py-1 lg:py-2 px-1.5 lg:px-3 hover:text-white transition delay-300 transition delay-300 cursor-pointer rounded-tr-md rounded-br-md hover:bg-green-200 bg-gray-200">+</button>
                                 </span>
                                 <p className="text-sm font-semilbold text-gray-500">KSH: {item.price}</p>
