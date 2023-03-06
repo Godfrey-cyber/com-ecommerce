@@ -31,12 +31,22 @@ const userSlice = createSlice({
 			state.isFetching = false
 			state.error = true
 		},
-		logout: (state) => {
+		logoutStart: (state) => {
+			state.isFetching = true
+			// state.currentUser = null
+		},
+		logoutSuccess: (state) => {
+			state.isFetching = false
+			state.currentUser = null
+		}
+		,
+		logoutFailure: (state) => {
+			state.isFetching = false
 			state.currentUser = null
 		}
 	}
 })
 
-export const { loginFailure, loginSuccess, loginStart, registerStart, registerSuccess, registerFailure, logout } = userSlice.actions
+export const { loginFailure, loginSuccess, loginStart, registerStart, registerSuccess, registerFailure, logoutStart, logoutFailure, logoutSuccess } = userSlice.actions
 export const selectUser = (state => state.user.currentUser)
 export default userSlice.reducer

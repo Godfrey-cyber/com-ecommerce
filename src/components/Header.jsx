@@ -1,5 +1,5 @@
 import React from 'react'
-import { ShoppingCartIcon, MagnifyingGlassIcon, ArchiveBoxArrowDownIcon } from '@heroicons/react/24/outline'
+import { ShoppingCartIcon, MagnifyingGlassIcon, ArchiveBoxArrowDownIcon, logoutSuccess } from '@heroicons/react/24/outline'
 import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { selectTotal } from "../redux/cartRedux.js"

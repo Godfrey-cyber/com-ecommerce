@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Header from "../components/Header.jsx"
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import SmallHeader from "../components/SmallHeader.jsx"
@@ -20,6 +20,7 @@ const ProductDetails = () => {
 	const dispatch = useDispatch()
 	const products = useSelector(items)
 	const user = useSelector(selectUser)
+	const [count, setCount] = useState(0)
 // stripe session
 	const createCheckoutSession = async () => {
 		const stripe = await stripePromise
@@ -55,7 +56,7 @@ const ProductDetails = () => {
 	const deleteCart = () => {
 		dispatch()
 	}
-
+	
 	//clear cart
 	// console.log(JSON.parse(JSON.parse(localStorage.removeItem("persist:root")).cart))
 	return (
@@ -92,11 +93,11 @@ const ProductDetails = () => {
                         	{/*butttons*/}
                             <span className="flex items-center justify-between w-full">
                                 <span className="flex items-center">
-                                    <button className="items-center flex text-lg text-gray-500 py-1 lg:py-2 px-1.5 lg:px-3 hover:text-white transition delay-300 transition delay-300 cursor-pointer rounded-tl-md rounded-bl-md hover:bg-red-200 bg-gray-200">-</button>
-                                    <span className="items-center flex text-sm text-gray-500 p-2 px-6">{item.quantity}</span>
-                                    <button className="items-center flex text-lg text-gray-500 py-1 lg:py-2 px-1.5 lg:px-3 hover:text-white transition delay-300 transition delay-300 cursor-pointer rounded-tr-md rounded-br-md hover:bg-green-200 bg-gray-200">+</button>
+                                    <button onClick={() => count >= 2 && setCount(count - 1)} onClick={() => dispatch(decrement({id: item._id, count }))} className="items-center flex text-lg text-gray-500 py-1 lg:py-2 px-1.5 lg:px-3 hover:text-white transition delay-300 transition delay-300 cursor-pointer rounded-tl-md rounded-bl-md hover:bg-red-200 bg-gray-200">-</button>
+                                    <span className="items-center flex text-sm text-gray-500 p-2 px-6">{item.count}</span>
+                                    <button onClick={() => setCount(count + 1)} onClick={() => dispatch(increment({id: item._id, count }))} className="items-center flex text-lg text-gray-500 py-1 lg:py-2 px-1.5 lg:px-3 hover:text-white transition delay-300 transition delay-300 cursor-pointer rounded-tr-md rounded-br-md hover:bg-green-200 bg-gray-200">+</button>
                                 </span>
-                                <p className="text-sm font-semilbold text-gray-500">KSH: {item.price}</p>
+                                <p className="text-sm font-semilbold text-gray-500 slashed-zero">KSH: {item.price * item.count}</p>
                             </span> 
                         </div>
 							))}
@@ -109,7 +110,7 @@ const ProductDetails = () => {
 								<p className="text-lg font-medium text-gray-700">Delivery</p>
 							</span>
 							<span className="flex flex-col space-y-2">
-								<p className="text-lg font-medium text-gray-700 justify-self-end">Ksh. {total}</p>
+								<p className="text-lg font-medium text-gray-700 justify-self-end slashed-zero">Ksh. {total}</p>
 								<p className="text-sm font-light text-gray-600">Depends on location</p>
 							</span>
 						</div>

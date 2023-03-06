@@ -1,4 +1,4 @@
-import { loginFailure, loginStart, loginSuccess, registerStart, registerSuccess, registerFailure, logout } from "../redux/userRedux.js"
+import { loginFailure, loginStart, loginSuccess, registerStart, registerSuccess, registerFailure, logoutStart, logoutFailure, logoutSuccess } from "../redux/userRedux.js"
 import { publicRequest }  from "../requestMethods.js"
 
 export const login = async (dispatch, user) => {
@@ -24,11 +24,11 @@ export const register = async (dispatch, formData) => {
 }
 
 export const logoutUser = async (dispatch) => {
-	// dispatch(registerStart())
+	dispatch(logoutStart())
 	try {
 		const res = await publicRequest.post("users/auth/logout")
-		dispatch(logout())
+		dispatch(logoutSuccess())
 	} catch (err) {
-		console.log(err)
+		dispatch(logoutFailure())
 	}
 }

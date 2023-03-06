@@ -9,7 +9,7 @@ const cartSlice = createSlice({
 	},
 	reducers: {
 		addProduct: (state, action) => {
-			let cartIndex = state.products.findIndex(item => item._id === action.payload.id)
+			let cartIndex = state.products.findIndex(item => item._id === action.payload.id,)
 			if (cartIndex >= 0) {
 				state.products[cartIndex].count += 1
 			} else {
@@ -26,7 +26,7 @@ const cartSlice = createSlice({
 	      }, 0)
 		},
 		increment: (state, action) => {
-	      	let index = state.products.findIndex((item) => item._id === action.payload._id)
+	      	let index = state.products.findIndex((item) => item._id === action.payload.id)
 	      	state.products[index].count += 1
 	    },
 	    decrement: (state, action) => {

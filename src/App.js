@@ -12,26 +12,29 @@ import Register from "./pages/Register.jsx"
 import Cart from "./pages/Cart.jsx"
 import { useSelector } from "react-redux"
 import { selectUser } from "./redux/userRedux.js"
+import HowToSell from "./pages/HowToSell.jsx"
 // import { loggedUser } from "./requestMethods"
 function App() {
     const user = useSelector(selectUser)
-    
+    let online = 'true'
+    let checkOnline = online ? 'font-[Montserrat]' : 'font-serif'
     // console.log(user)
   return (
-    <div className="min-h-screen w-full font-['Montserrat'] bg-zinc-100 text-sm text-semibold relative pb-4 overlow-x-hidden">
+    <div className={`min-h-screen w-full ${checkOnline} bg-zinc-100 text-sm text-semibold relative pb-4 overlow-x-hidden`}>
     
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/category_page/:id" element={<CategoryPage />} />
-        <Route path="/product_detail/:id" element={<ProductDetails />} />
-        <Route path="/subcategory_page/:id" element={<SubCategoryPage />} />
-        <Route path="/products_cart" element={<Cart />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/pay" element={<Pay />} />
-        <Route path="/success" element={<Success />} />
-        <Route path="/failure" element={<Failure />} />
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/category_page/:id" element={<CategoryPage />} />
+            <Route path="/product_detail/:id" element={<ProductDetails />} />
+            <Route path="/subcategory_page/:id" element={<SubCategoryPage />} />
+            <Route path="/products_cart" element={<Cart />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/pay" element={<Pay />} />
+            <Route path="/success" element={<Success />} />
+            <Route path="/failure" element={<Failure />} />
+            <Route path="/how_to_sell" element={<HowToSell />} />
         </Routes>
     </BrowserRouter>
     </div>

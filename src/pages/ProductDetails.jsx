@@ -10,14 +10,13 @@ const ProductDetails = ({ modal }) => {
 	const [product, setProduct] = useState({})
 	const dispatch = useDispatch()
 	const location = useLocation().pathname.split("/")[2]
-	const [count, setCount] = useState(0)
 	const prods = useSelector(items)
 	const [quantity, setQuantity] = useState(0)
 	const cartCount = useSelector(state => state.cart.totalCount)
 	const cartTotal = useSelector(state => state.cart.total)
-	console.log(cartCount)
-	console.log(cartTotal)
-	console.log(prods)
+	// console.log(cartCount)
+	// console.log(cartTotal)
+	// console.log(prods)
 	const handleQtyInc = () => {
 		// if (type === "dec") {
 		// 	count > 1 && setCount(count - 1)
@@ -39,19 +38,24 @@ const ProductDetails = ({ modal }) => {
 		dispatch(getCartCount())
 		dispatch(getTotal())
 	}
+	const [count, setCount] = useState(product.count || 0)
+
 	// FETCH PRODUCT
 	useEffect(() => {
 		const getProduct = async () => {
 			try {
 				const res = await axios.get(`http://localhost:5000/api/products/getProduct/${location}`)
 				setProduct(res.data.data)
+				console.log(res.data.data)
 			} catch (error) {
 				console.log(error)
 			}
 		}
 		getProduct()
 	}, [location])
-	// console.log(product)
+	console.log(product.count)
+	console.log(count)
+	console.log(product)
 	return (
 		<div className="flex flex-col w-full h-full relative">
 			<SmallHeader />
@@ -70,13 +74,13 @@ const ProductDetails = ({ modal }) => {
 							<h2 className="text-lg font-normal text-gray-800">Brand: {product.brand}</h2>
 							<h2 className="text-lg font-semibold text-gray-800">In Stock: {product.quantity}</h2>
 						</span>
-						<button onClick={() => handleClick()} className="min-w-36 px-3 py-3 hover:bg-orange-600 transition delay-300 bg-orange-400 focus:outline-none rounded-md text-white font-semibold text-lg text-white">Add to Cart</button>
+						<button disabled={count > 1} onClick={() => handleClick()} className="min-w-36 px-3 py-3 hover:bg-orange-600 transition delay-300 bg-orange-400 focus:outline-none rounded-md text-white font-semibold text-lg text-white">Add to Cart</button>
 						<div className="flex items-center border border-gray-200 rounded-md w-max">
-							<span onClick={handleQtyDec} className="items-center flex text-lg text-gray-500 py-2 px-3 hover:text-white transition delay-300 transition delay-300 cursor-pointer rounded-tl-md rounded-bl-md hover:bg-red-200 bg-gray-200">-</span>
+							<span onClick={() => handleQtyDec()} className="items-center flex text-lg text-gray-500 py-2 px-3 hover:text-white transition delay-300 transition delay-300 cursor-pointer rounded-tl-md rounded-bl-md hover:bg-red-200 bg-gray-200">-</span>
 							<span className="items-center flex w-12">
-								<p className="text-sm text-gray-500 mx-auto">{ product.count }</p>
+								<p className="text-sm text-gray-500 mx-auto">{ count }</p>
 							</span>
-							<span onClick={handleQtyInc} className="items-center flex text-lg text-gray-500 py-2 px-3 hover:text-white transition delay-300 transition delay-300 cursor-pointer rounded-tr-md rounded-br-md hover:bg-green-200 bg-gray-200">+</span>
+							<span onClick={() => handleQtyInc()} className="items-center flex text-lg text-gray-500 py-2 px-3 hover:text-white transition delay-300 transition delay-300 cursor-pointer rounded-tr-md rounded-br-md hover:bg-green-200 bg-gray-200">+</span>
 						</div>
 					</div>
 				</div>

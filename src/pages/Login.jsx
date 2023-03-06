@@ -2,7 +2,7 @@ import { CheckCircleIcon, EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outl
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import { selectUser } from "../redux/userRedux.js"
+import { selectUser, loginSuccess } from "../redux/userRedux.js"
 import { login } from "../redux/apiCalls"
 
 const Login = () => {
@@ -19,9 +19,14 @@ const Login = () => {
     }
     const handleSubmit = (event) => {
         event.preventDefault()
-        login(dispatch, { password, email })
-        setFormData({email: "", password: ""})
-        navigate('/')
+        if (loginSuccess) {
+            login(dispatch, { password, email })
+            setFormData({email: "", password: ""})
+            navigate('/')
+        } else {
+            console.log("error occured")
+        }
+        
     }
     const user = useSelector(selectUser)
     // console.log(user)
