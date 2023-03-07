@@ -2,14 +2,17 @@ import React from 'react'
 import { ShoppingCartIcon, MagnifyingGlassIcon, ArchiveBoxArrowDownIcon, logoutSuccess } from '@heroicons/react/24/outline'
 import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
-import { selectTotal } from "../redux/cartRedux.js"
+import { selectTotal, totalCartCount, cartItems } from "../redux/cartRedux.js"
 
 const Header = () => {
     const navigate = useNavigate()
     const total = useSelector(selectTotal)
     const products = useSelector(state => state.cart.products)
-    const cartCount = useSelector(state => state.cart.products.length)
-    // console.log(total)
+    const cartTotal = useSelector(totalCartCount)
+    const items = useSelector(cartItems)
+    console.log(products)
+    console.log(total)
+    console.log(items)
 	return (
 		<header className="lg_header">
             <main className="flex justify-between items-center w-full h-full">
@@ -35,7 +38,7 @@ const Header = () => {
                     <div className="header_list flex space-x-5 items-center">
                         <span onClick={() => navigate("/products_cart")} className="cursor-pointer relative">
                         	<ShoppingCartIcon className="h-6 w-6 text-gray-800"/>
-                            <span className="cart">{ cartCount > 9 ? "9+" : cartCount }</span>
+                            <span className="cart">{ items > 9 ? "9+" : items }</span>
                         </span>
                     	<span className="flex flex-col hidden md:inline-flex space-y-0.25 cursor-pointer group">
                     		<p className="text-xs font-normal text-gray-600 group-hover:text-orange-400 transition delay-300">Total</p>

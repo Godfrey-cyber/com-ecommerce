@@ -1,8 +1,10 @@
 import React from 'react'
 import Header from "../components/Header.jsx"
 import SmallHeader from "../components/SmallHeader.jsx"
+import { useNavigate } from "react-router-dom"
 
 const HowToSell = () => {
+	const navigate = useNavigate()
 	return (
 		<div className="w-full h-full">
 		<SmallHeader />
@@ -37,6 +39,7 @@ const HowToSell = () => {
 					<p className="text-sm font-normal text-gray-800">Instantly get access to various online payment options that your customers can use to pay you. All payments are secure are fraud-proof</p>
 					<h3 className="text-sm font-bold text-gray-900">Get a Sky.Wallet</h3>
 					<p className="text-sm font-normal text-gray-800">All your payments sent to you digitally via a pin-secured Sky.Wallet. You can safely hold these funds in the wallet or withdraw to your bank account, mobile money account and more.</p>
+					<button onClick={() => navigate('/dashboard')} className="text-lg text-white bg-orange-400 font-semibold rounded-md hover:bg-white hover:text-orange-400 w-4/5 lg:w-72 px-3 py-2 hover:border hover:border-2 transition delay-300">GET STARTED</button>
 				</div>
 			</div>
 		</section>

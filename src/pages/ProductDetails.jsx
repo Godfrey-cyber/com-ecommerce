@@ -27,16 +27,20 @@ const ProductDetails = ({ modal }) => {
 		// }
 		setCount(count + 1)
 		dispatch(increment({id: product._id, count }))
+		dispatch(getTotal())
+		dispatch(getCartCount())
 	}
 	const handleQtyDec = () => {
 		count > 1 && setCount(count - 1)
 		dispatch(decrement({id: product._id, count }))
+		dispatch(getTotal())
+		dispatch(getCartCount())
 	}
 	const handleClick = () => {
 		setCount(count + 1)
 		dispatch(addProduct({ ...product, count }))
-		dispatch(getCartCount())
 		dispatch(getTotal())
+		dispatch(getCartCount())
 	}
 	const [count, setCount] = useState(product.count || 0)
 
@@ -53,9 +57,6 @@ const ProductDetails = ({ modal }) => {
 		}
 		getProduct()
 	}, [location])
-	console.log(product.count)
-	console.log(count)
-	console.log(product)
 	return (
 		<div className="flex flex-col w-full h-full relative">
 			<SmallHeader />
@@ -74,13 +75,13 @@ const ProductDetails = ({ modal }) => {
 							<h2 className="text-lg font-normal text-gray-800">Brand: {product.brand}</h2>
 							<h2 className="text-lg font-semibold text-gray-800">In Stock: {product.quantity}</h2>
 						</span>
-						<button disabled={count > 1} onClick={() => handleClick()} className="min-w-36 px-3 py-3 hover:bg-orange-600 transition delay-300 bg-orange-400 focus:outline-none rounded-md text-white font-semibold text-lg text-white">Add to Cart</button>
+						<button disabled={count > 1} onClick={handleClick} className="min-w-36 px-3 py-3 hover:bg-orange-600 transition delay-300 bg-orange-400 focus:outline-none rounded-md text-white font-semibold text-lg text-white">Add to Cart</button>
 						<div className="flex items-center border border-gray-200 rounded-md w-max">
 							<span onClick={() => handleQtyDec()} className="items-center flex text-lg text-gray-500 py-2 px-3 hover:text-white transition delay-300 transition delay-300 cursor-pointer rounded-tl-md rounded-bl-md hover:bg-red-200 bg-gray-200">-</span>
 							<span className="items-center flex w-12">
 								<p className="text-sm text-gray-500 mx-auto">{ count }</p>
 							</span>
-							<span onClick={() => handleQtyInc()} className="items-center flex text-lg text-gray-500 py-2 px-3 hover:text-white transition delay-300 transition delay-300 cursor-pointer rounded-tr-md rounded-br-md hover:bg-green-200 bg-gray-200">+</span>
+							<span onClick={handleQtyInc} className="items-center flex text-lg text-gray-500 py-2 px-3 hover:text-white transition delay-300 transition delay-300 cursor-pointer rounded-tr-md rounded-br-md hover:bg-green-200 bg-gray-200">+</span>
 						</div>
 					</div>
 				</div>

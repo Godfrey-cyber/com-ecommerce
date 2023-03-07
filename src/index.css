@@ -113,4 +113,8 @@
   .item_img {
     @apply h-3/5 lg:h-4/5 w-3/5 lg:w-4/5 object-contain mx-auto
   }
+  /*//dashboard*/
+  .dash_span {
+    @apply text-sm text-white hover:bg-white hover:text-cyan-800 cursor-pointer transition delay-300 py-2 font-semibold px-3
+  }
 }
