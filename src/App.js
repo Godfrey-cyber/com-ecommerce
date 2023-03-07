@@ -14,6 +14,7 @@ import { useSelector } from "react-redux"
 import { selectUser } from "./redux/userRedux.js"
 import HowToSell from "./pages/HowToSell.jsx"
 import Dashboard from "./pages/Dashboard.jsx"
+import Product from "./pages/Product.jsx"
 // import { loggedUser } from "./requestMethods"
 function App() {
     const user = useSelector(selectUser)
@@ -37,6 +38,7 @@ function App() {
             <Route path="/failure" element={<Failure />} />
             <Route path="/how_to_sell" element={<HowToSell />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/products" element={<Product />} />
         </Routes>
     </BrowserRouter>
     </div>

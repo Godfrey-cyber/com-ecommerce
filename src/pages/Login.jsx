@@ -17,6 +17,7 @@ const Login = () => {
     const onChange = (event) => {
         setFormData(prev => ({...prev, [event.target.name]: event.target.value}))
     }
+    const { isFetching, error } = useSelector(state => state.cart)
     const handleSubmit = (event) => {
         event.preventDefault()
         if (loginSuccess) {
@@ -60,7 +61,7 @@ const Login = () => {
                                     <p className="text-sm font-normal text-orange-400 cursor-pointer">Privacy Policy</p>
                                 </span>
                             </div>
-                            <button onClick={handleSubmit} type="submit" className="sign_up_button">Login</button>
+                            <button disabled={isFetching} onClick={handleSubmit} type="submit" className="sign_up_button">Login</button>
                             <p className="text-sm font-normal text-orange-400 cursor-pointer">Forgot Password?</p>
                             <p className="text-sm font-normal text-gray-800">Don't have an account? <span onClick={() => navigate("/register")} className="text-orange-400 cursor-pointer">Sign Up</span></p>
                         </div>

@@ -115,6 +115,12 @@
   }
   /*//dashboard*/
   .dash_span {
-    @apply text-sm text-white hover:bg-white hover:text-cyan-800 cursor-pointer transition delay-300 py-2 font-semibold px-3
+    @apply  hover:bg-cyan-500 flex hover:text-teal-800 items-center space-x-3 cursor-pointer transition delay-300 py-2  px-3
+  }
+  .cart_icon_dash {
+    @apply bg-gradient-to-r from-teal-300 to-blue-700 text-white h-8 w-8 p-1 rounded-md
+  }
+  .dash_text {
+    @apply text-sm text-white font-semibold
   }
 }
