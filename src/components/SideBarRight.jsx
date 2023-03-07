@@ -10,7 +10,7 @@ const SideBarRight = () => {
 				<span className="col-span-6 flex flex-col space-y-4 px-20 py-8 rounded-md shadow shadow-gray-200 bg-white mx-auto">
 					<p className="text-xl font-semibold text-black">Upload Product & Activate Your Shop</p>
 					<p className="text-sm font-light text-black">Upload first product and get visible on the Marketplace.</p>
-					<button onClick={() => navigate("/product")} className="rounded-md bg-cyan-600 px-4 py-3 text-white text-sm font-medium w-fit">ADD A PRODUCT</button>
+					<button onClick={() => navigate("/products")} className="rounded-md bg-cyan-600 px-4 py-3 text-white text-sm font-medium w-fit">ADD A PRODUCT</button>
 				</span>
 				<span className="col-span-6 flex flex-col space-y-4 px-20 py-8 rounded-md shadow shadow-gray-200 bg-white mx-auto">
 					<p className="text-xl font-semibold text-black">You are a Premium Seller</p>
