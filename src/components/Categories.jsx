@@ -8,7 +8,7 @@ const Categories = () => {
 	useEffect(() => {
 		const getCategories = async () => {
 			try {
-				const res = await axios.get("http://localhost:5000/api/category/getAll")
+				const res = await axios.get("https://com-shop.onrender.com/api/category/getAll")
 				setProducts(res.data.data)
 			} catch (error) {
 				console.log(error)
