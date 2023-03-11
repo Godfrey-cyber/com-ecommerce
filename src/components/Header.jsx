@@ -10,9 +10,6 @@ const Header = () => {
     const products = useSelector(state => state.cart.products)
     const cartTotal = useSelector(totalCartCount)
     const items = useSelector(cartItems)
-    console.log(products)
-    console.log(total)
-    console.log(items)
 	return (
 		<header className="lg_header">
             <main className="flex justify-between items-center w-full h-full">
