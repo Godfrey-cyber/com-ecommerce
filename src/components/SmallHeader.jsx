@@ -23,7 +23,7 @@ const SmallHeader = () => {
 				<p className="small_header_list">Updates</p>*/}
 			</span>
 			<span className="small_header_span">
-				{!user ? <p onClick={() => navigate('/register')} className="small_header_list hidden md:flex">Sign up</p> : <p onClick={() => logoutUser(dispatch())} className="small_header_list">{`Hello ${username}`}</p>}
+				{!user ? <p onClick={() => navigate('/login')} className="small_header_list hidden md:flex">Login</p> : <p onClick={() => logoutUser(dispatch())} className="small_header_list">{`Hello ${username}`}</p>}
 				<p onClick={() => navigate('/how_to_sell')} className="small_header_list ">Sell on Store</p>
 			</span>
 		</div>

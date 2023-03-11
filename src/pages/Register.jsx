@@ -1,22 +1,36 @@
 import { CheckCircleIcon, EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { register } from "../redux/apiCalls"
 // import { reset } from "../slices/authService.js"
 
 const Register = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const { currentUser, isFetching, error } = useSelector(state => state.user)
+
     const [formData, setFormData] = useState({email: "", username: "", password: ""})
     const [toggle, setToggle] = useState(false)
+    // toggle passwordview
     const handlePass = () => {
         setToggle(prev => !prev)
     }
+
+    useEffect(() => {
+        if (error) {
+            console.log("there was an error")
+        }
+        if (currentUser) {
+            navigate('/login')
+        }
+    }, [currentUser, error, navigate, dispatch])
+    // set data
     const onChange = (event) => {
         setFormData(prev => ({...prev, [event.target.name]: event.target.value}))
         console.log(formData)
     }
+    // submit data
     const { username, password, email } = formData
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -24,7 +38,7 @@ const Register = () => {
             checkPassword(password)
         register(dispatch, { username, email, password })
         setFormData({email: "", username: "", password: ""})
-        navigate('/login')
+
     }
     const checkPassword = (password) => {
         if (password.length < 6) {
