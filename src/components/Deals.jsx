@@ -8,7 +8,7 @@ const Deals = () => {
 	useEffect(() => {
 		const getProducts = async () => {
 			try {
-				const res = await axios.get("https://com-shop.onrender.com/api/getAll")
+				const res = await axios.get("https://com-shop.onrender.com/api/products/getAll")
 				setProducts(res.data.data)
 				// console.log({products})
 			} catch (error) {
