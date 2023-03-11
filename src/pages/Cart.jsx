@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
+import {useState} from 'react'
 import Header from "../components/Header.jsx"
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import SmallHeader from "../components/SmallHeader.jsx"
 import { useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
-import { items, selectTotal, removeFromCart, deleteAll, increment, decrement, getCartCount, getTotal } from "../redux/cartRedux.js"
+import { items, selectTotal, removeFromCart, deleteAll, increment, cartItems, decrement, getCartCount, getTotal } from "../redux/cartRedux.js"
 import StripeCheckout from "react-stripe-checkout"
 import axios from "axios"
 import { loadStripe } from "@stripe/stripe-js"
@@ -20,6 +20,7 @@ const ProductDetails = () => {
 	const dispatch = useDispatch()
 	const products = useSelector(items)
 	const user = useSelector(selectUser)
+	const itemsCount = useSelector(cartItems)
 	const [count, setCount] = useState(0)
 // stripe session
 	const createCheckoutSession = async () => {
@@ -65,7 +66,7 @@ const ProductDetails = () => {
 			<SmallHeader />
 			<Header />
 			<section className="flex flex-col px-2 md:px-12 lg:px-20 mx-auto my-8">
-				<p className="text-sm lg:text-lg font-medium lg:font-semibold text-center lg:place-self-start text-gray-800">You have {products.length} products in your cart</p>
+				<p className="text-sm lg:text-lg font-medium lg:font-semibold text-center lg:place-self-start text-gray-800">You have {itemsCount} products in your cart</p>
 				<div className="grid grid-cols-1 lg:grid-cols-12 gap-4 bg-white ">
 					{products.length == 0 ? 
                     <div className="h-[80vh] col-span-12 lg:col-span-8 w-full flex flex-col space-y-3 px-4 lg:px-20 my-8 mx-auto justify-center items-center">

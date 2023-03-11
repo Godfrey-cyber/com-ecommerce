@@ -9,7 +9,8 @@ const Categories = () => {
 		const getCategories = async () => {
 			try {
 				const res = await axios.get("https://com-shop.onrender.com/api/category/getAll")
-				setProducts(res.data.data)
+				setProducts(res?.data?.data)
+				console.log(res?.data?.data)
 			} catch (error) {
 				console.log(error)
 			}
