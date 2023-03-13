@@ -12,7 +12,7 @@ const ProductDetails = () => {
 	useEffect(() => {
 		const getProducts = async () => {
 			try {
-				const res = await axios.get(`process.env.BACKEND_URL/products/getByCategory/${location}`)
+				const res = await axios.get(`http://localhost:5000/api/products/getByCategory/${location}`)
 				setProducts(res?.data?.data)
 			} catch (error) {
 				console.log(error)

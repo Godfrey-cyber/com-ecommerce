@@ -8,7 +8,7 @@ const Categories = () => {
 	useEffect(() => {
 		const getCategories = async () => {
 			try {
-				const res = await axios.get("process.env.BACKEND_URL/category/getAll")
+				const res = await axios.get("http://localhost:5000/api/category/getAll")
 				setProducts(res?.data?.data)
 				console.log(res?.data?.data)
 			} catch (error) {
