@@ -17,12 +17,12 @@ console.log(TOKEN)
 const bearer = "sk_test_51K8P6eBAuY8XODRosWWfFycGoPBx1MvWbUae8dfEA2PZv8ecA6DU2FnIlFtHsjDdnscKA5VzZElo21xyrFDjINZu006lt78eOz"
 console.log(TOKEN)
 export const publicRequest = axios.create({
-	baseURL: BASE_URL,
+	baseURL: BACKEND_URL,
 	// Authorization: `Bearer ${bearer}`
 })
 
 export const userRequest = axios.create({
-	baseURL: BASE_URL,
+	baseURL: BACKEND_URL,
 	header: { token: TOKEN },
 	Authorization: `Bearer ${bearer}`
 })
