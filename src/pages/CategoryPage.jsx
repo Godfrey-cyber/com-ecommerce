@@ -8,14 +8,12 @@ const ProductDetails = () => {
 	const [products, setProducts] = useState([])
 	const location = useLocation().pathname.split("/")[2]
 	const navigate = useNavigate()
-	console.log(location)
 	// FETCH Category
 	useEffect(() => {
 		const getProducts = async () => {
 			try {
-				const res = await axios.get(`http://localhost:5000/api/products/getByCategory/${location}`)
+				const res = await axios.get(`process.env.BACKEND_URL/products/getByCategory/${location}`)
 				setProducts(res?.data?.data)
-				console.log(res?.data?.data)
 			} catch (error) {
 				console.log(error)
 			}

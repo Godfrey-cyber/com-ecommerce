@@ -13,6 +13,7 @@ const Pay = () => {
 	const [stripeToken, setStripeToken] = useState(null)
 	const products = useSelector(items)
 	const user = useSelector(selectUser)
+	// const { resetCart } = useSelector(state => state.cart)
 	const dispatch = useDispatch()
 	const onToken = (token) => {
 		setStripeToken(token)
@@ -39,7 +40,7 @@ const Pay = () => {
 		if (result.error) {
 			return result.error.message
 		}
-		dispatch(resetCart())
+		// dispatch(resetCart())
 	}
 
 	// useEffect(() => {

@@ -25,7 +25,7 @@ const ProductDetails = () => {
 // stripe session
 	const createCheckoutSession = async () => {
 		const stripe = await stripePromise
-		const checkoutSession = await axios.post("http://localhost:5000/api/checkout/payment", { 
+		const checkoutSession = await axios.post("process.env.BACKEND_URL/checkout/payment", { 
 			headers: { 
 				Authorization: `Bearer ${KEY}`,
 				"Content-Type": "application/json",

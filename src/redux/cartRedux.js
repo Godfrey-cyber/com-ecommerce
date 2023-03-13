@@ -58,9 +58,6 @@ const cartSlice = createSlice({
 			state.products = []
 			state.totalCount = 0
 			state.total = 0
-		},
-		uploadProduct: () => {
-			
 		}
 	}
 })

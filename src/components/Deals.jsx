@@ -8,7 +8,7 @@ const Deals = () => {
 	useEffect(() => {
 		const getProducts = async () => {
 			try {
-				const res = await axios.get("http://localhost:5000/api/products/getAll")
+				const res = await axios.get("process.env.BACKEND_URL/products/getAll")
 				setProducts(res.data.data)
 				// console.log({products})
 			} catch (error) {
