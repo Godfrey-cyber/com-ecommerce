@@ -5,7 +5,8 @@ import SideBarLeft from "../components/SideBarLeft.jsx"
 import { useDispatch, useSelector } from "react-redux"
 import { addProduct } from "../redux/apiCalls.js"
 import { apiCatFetch } from "../redux/apiCalls"
-import { userRequest } from "../requestMethods"
+import { BACKEND_URL } from "../requestMethods"
+import axios from "axios"
 import { categoryFailure, categorySuccess, categoryStart } from "../redux/categoryRedux.js"
 const Product = () => {
 	const [productData, setProductData] = useState({ title: "", desc: "", brand: "", model: "", category: "", subcategory: "", photo: "" })
@@ -20,7 +21,7 @@ const Product = () => {
         const addProduct = async () => {
 		dispatch(categoryStart())
 		try {
-	    	const res = await userRequest.get("category/getAll")
+	    	const res = await axios.get(`${BACKEND_URL}/category/getAll`)
 	    	dispatch(categorySuccess(res.data))
 	    	setCategories(res.data.data)
 	    	console.log(res.data.data)
@@ -101,7 +102,7 @@ const Product = () => {
 								{/*CATEGORIES*/}
 								<select onChange={handleChange} name="catId" className="text-sm font-medium text-gray-500 border border-gray-300 rounded-sm focus:outline-none px-2 py-2 w-full my-4 h-10 md:h-12" placeholder="Add a category">
 									{categories.map(cat => (
-										<option className="text-sm font-normal cursor-pointer" key={cat._id} value={cat._id}>{cat.name}</option>
+										<option className="text-sm font-normal cursor-pointer w-full overflow-x-hidden" key={cat._id} value={cat._id}>{cat.name}</option>
 										))}
 								</select>
 							</div>
