@@ -2,7 +2,7 @@ import axios from "axios"
 import { useSelector } from "react-redux"
 import { selectUser } from "./redux/userRedux.js"
 
-const BASE_URL = "https://com-shop.onrender.com/api/"
+const BASE_URL = "http://localhost:5000/api/"
 // const token = useSelector(selectUser).token
 
 // const GetToken = () => {

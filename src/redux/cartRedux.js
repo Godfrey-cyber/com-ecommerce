@@ -54,10 +54,18 @@ const cartSlice = createSlice({
 				}
 			state.products = newBasket;
 		},
+		resetCart: (state) => {
+			state.products = []
+			state.totalCount = 0
+			state.total = 0
+		},
+		uploadProduct: () => {
+			
+		}
 	}
 })
 
-export const {addProduct, removeFromCart, deleteAll, getTotal, increment, decrement, getCartCount} = cartSlice.actions
+export const {addProduct, removeFromCart, resetCart, deleteAll, getTotal, increment, decrement, getCartCount} = cartSlice.actions
 export const selectTotal = (state) => state.cart.products?.reduce((total, product) => total + product.price * product.count, 0);
 export const cartItems = (state) => state.cart.products.reduce((total, item) => total + item.count, 0)
 export const items = (state) => state.cart.products

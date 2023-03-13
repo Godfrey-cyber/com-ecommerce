@@ -4,7 +4,7 @@ import { ShoppingCartIcon, MegaphoneIcon, TagIcon, WalletIcon, HomeIcon, Banknot
 const SideBarLeft = () => {
 	const navigate = useNavigate()
 	return (
-		<div className="col-span-2 flex flex-col bg-cyan-900 min-h-screen space-y-2">
+		<div className="lg:col-span-2 lg:flex flex-col col-span-0 bg-cyan-900 hidden min-h-screen space-y-2">
 			<p className="text-xl text-gray-800 my-4 font-semibold px-3">DASH DEALS</p>
 			<div className="flex flex-col space-y-4">
 				<span onClick={() => navigate("/dashboard")} className="dash_span">

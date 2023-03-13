@@ -1,5 +1,5 @@
 import { CheckCircleIcon, EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline'
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { register } from "../redux/apiCalls"
@@ -10,7 +10,7 @@ const Register = () => {
     const dispatch = useDispatch()
     const { currentUser, isFetching, error } = useSelector(state => state.user)
 
-    const [formData, setFormData] = useState({email: "", username: "", password: ""})
+    const [formData, setFormData] = useState({email: "", username: "", password: "" })
     const [toggle, setToggle] = useState(false)
     // toggle passwordview
     const handlePass = () => {
@@ -91,7 +91,7 @@ const Register = () => {
                             </span>
                             <label className="label_text">Full Name:</label>
                             <span className="form_span border">
-                                <input onChange={onChange} value={username} type="text" name="username" placeholder="John Doe" className="form_input" id="fullName" />
+                                <input onChange={onChange} value={username} type="text" name="username" placeholder="John Doe" className="form_input" id="username" />
                             </span>
                             <label className={`label_text ${checkPassword ? 'text-red' : ""}`}>Password: </label>
                             <span className="form_span flex items-center justify-between border">

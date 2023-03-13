@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import StripeCheckout from "react-stripe-checkout"
 import axios from "axios"
 import { loadStripe } from "@stripe/stripe-js"
-import { useSelector } from "react-redux"
-import { items } from "../redux/cartRedux"
+import { useSelector, useDispatch } from "react-redux"
+import { items, resetCart } from "../redux/cartRedux"
 import { selectUser } from "../redux/userRedux"
 const stripePromise = loadStripe('pk_test_51K8P6eBAuY8XODRoZHtY0qruDSMWYS7isKfwfa8NjWrQCEvrC8HbCFx58mSV7kDSp8RSLTojLk3gQk4x80csOTqY00VX3TDeHd')
 
@@ -13,6 +13,7 @@ const Pay = () => {
 	const [stripeToken, setStripeToken] = useState(null)
 	const products = useSelector(items)
 	const user = useSelector(selectUser)
+	const dispatch = useDispatch()
 	const onToken = (token) => {
 		setStripeToken(token)
 		console.log(token)
@@ -20,7 +21,7 @@ const Pay = () => {
 
 	const createCheckoutSession = async () => {
 		const stripe = await stripePromise
-		const checkoutSession = await axios.post("https://com-shop.onrender.com/api/checkout/payment", { 
+		const checkoutSession = await axios.post("http://localhost:5000/api/checkout/payment", { 
 			headers: { 
 				Authorization: `Bearer ${KEY}`,
 				"Content-Type": "application/json",
@@ -38,6 +39,7 @@ const Pay = () => {
 		if (result.error) {
 			return result.error.message
 		}
+		dispatch(resetCart())
 	}
 
 	// useEffect(() => {

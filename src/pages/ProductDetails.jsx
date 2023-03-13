@@ -48,7 +48,7 @@ const ProductDetails = ({ modal }) => {
 	useEffect(() => {
 		const getProduct = async () => {
 			try {
-				const res = await axios.get(`https://com-shop.onrender.com/api/products/getProduct/${location}`)
+				const res = await axios.get(`http://localhost:5000/api/products/getProduct/${location}`)
 				setProduct(res.data.data)
 				console.log(res.data.data)
 			} catch (error) {
