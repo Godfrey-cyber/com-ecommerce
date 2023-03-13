@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
+import { BACKEND_URL } from "../requestMethods"
 import { useNavigate } from "react-router-dom"
 
 const Deals = () => {
@@ -8,7 +9,7 @@ const Deals = () => {
 	useEffect(() => {
 		const getProducts = async () => {
 			try {
-				const res = await axios.get("http://localhost:5000/api/products/getAll")
+				const res = await axios.get(`${BACKEND_URL}/products/getAll`)
 				setProducts(res.data.data)
 				// console.log({products})
 			} catch (error) {

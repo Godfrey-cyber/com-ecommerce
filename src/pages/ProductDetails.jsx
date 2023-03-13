@@ -3,6 +3,7 @@ import Header from "../components/Header.jsx"
 import SmallHeader from "../components/SmallHeader.jsx"
 import { useLocation } from "react-router-dom"
 import axios from "axios"
+import { BACKEND_URL } from "../requestMethods"
 import { useDispatch, useSelector } from "react-redux"
 import { addProduct, increment, decrement, getCartCount, items, getTotal } from "../redux/cartRedux.js"
 
@@ -48,7 +49,7 @@ const ProductDetails = ({ modal }) => {
 	useEffect(() => {
 		const getProduct = async () => {
 			try {
-				const res = await axios.get(`http://localhost:5000/api/products/getProduct/${location}`)
+				const res = await axios.get(`${BACKEND_URL}/products/getProduct/${location}`)
 				setProduct(res.data.data)
 				console.log(res.data.data)
 			} catch (error) {

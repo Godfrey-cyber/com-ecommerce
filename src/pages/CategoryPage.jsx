@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Header from "../components/Header.jsx"
 import SmallHeader from "../components/SmallHeader.jsx"
 import { useLocation, useNavigate } from "react-router-dom"
+import { BACKEND_URL } from "../requestMethods"
 import axios from "axios"
 
 const ProductDetails = () => {
@@ -12,7 +13,7 @@ const ProductDetails = () => {
 	useEffect(() => {
 		const getProducts = async () => {
 			try {
-				const res = await axios.get(`http://localhost:5000/api/products/getByCategory/${location}`)
+				const res = await axios.get(`${BACKEND_URL}/products/getByCategory/${location}`)
 				setProducts(res?.data?.data)
 			} catch (error) {
 				console.log(error)

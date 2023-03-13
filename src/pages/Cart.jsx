@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { items, selectTotal, removeFromCart, deleteAll, increment, cartItems, decrement, getCartCount, getTotal } from "../redux/cartRedux.js"
 import StripeCheckout from "react-stripe-checkout"
 import axios from "axios"
+import { BACKEND_URL } from "../requestMethods"
 import { loadStripe } from "@stripe/stripe-js"
 import { selectUser } from "../redux/userRedux"
 const stripePromise = loadStripe('pk_test_51K8P6eBAuY8XODRoZHtY0qruDSMWYS7isKfwfa8NjWrQCEvrC8HbCFx58mSV7kDSp8RSLTojLk3gQk4x80csOTqY00VX3TDeHd')
@@ -25,7 +26,7 @@ const ProductDetails = () => {
 // stripe session
 	const createCheckoutSession = async () => {
 		const stripe = await stripePromise
-		const checkoutSession = await axios.post("http://localhost:5000/api/checkout/payment", { 
+		const checkoutSession = await axios.post(`${BACKEND_URL}/checkout/payment`, { 
 			headers: { 
 				Authorization: `Bearer ${KEY}`,
 				"Content-Type": "application/json",
