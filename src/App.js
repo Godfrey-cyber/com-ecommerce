@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom"
 import Home from "./components/Home.jsx"
+import HeaderComp from "./components/Home.jsx"
 import CategoryPage from "./pages/CategoryPage.jsx"
 import SubCategoryPage from "./pages/SubCategoryPage.jsx"
 import Pay from "./pages/Pay.jsx"
@@ -30,10 +31,10 @@ function App() {
         return null
     }
   return (
-    <div className={`min-h-screen w-full ${checkOnline} bg-zinc-100 text-sm text-semibold relative pb-4 overlow-x-hidden`}>
-    
+    <div className={`min-h-screen w-full ${checkOnline} relative bg-zinc-200 text-sm text-semibold relative pb-4 overlow-x-hidden`}>
     <BrowserRouter>
         <ScrollToTop />
+        {/*<HeaderComp />*/}
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/category_page/:id" element={<CategoryPage />} />

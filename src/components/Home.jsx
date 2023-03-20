@@ -8,11 +8,10 @@ import RecentProducts  from "./RecentProducts.jsx"
 const Home = () => {
 	return (
 		<div className="flex flex-col">
-			<div className="sticky top-0 left-0 z-10 w-full">
-        		<SmallHeader />
-        		<Header />
-    		</div>
-			
+		<div className="sticky top-0 left-0 z-10 w-full">
+    		<SmallHeader />
+    		<Header />
+		</div>
 			<Showcase />
 	        <Categories />
 	        <RecentProducts />

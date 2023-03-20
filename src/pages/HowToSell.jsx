@@ -7,8 +7,8 @@ const HowToSell = () => {
 	const navigate = useNavigate()
 	return (
 		<div className="w-full h-full">
-		<SmallHeader />
-		<Header />
+		{/*<SmallHeader />
+		<Header />*/}
 		<section className="flex flex-col w-full h-full">
 			<div className="h-[400px] lg:h-[60vh] w-full">
 				<img src="https://skygarden.azureedge.net/media/original_images/SG-Home-Page-Banner-2.jpg" alt="" className="h-full object-contain lg:object-cover w-full" />
